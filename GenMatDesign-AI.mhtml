@@ -1,0 +1,228 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: http://127.0.0.1:5045/
+Subject: GenMatDesign-AI
+Date: Thu, 23 Apr 2026 12:24:41 +0530
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--pXJhJ0PlQN28Tibgt47t8sxjN1HmPjL1iIg1XpODI7----"
+
+
+------MultipartBoundary--pXJhJ0PlQN28Tibgt47t8sxjN1HmPjL1iIg1XpODI7----
+Content-Type: text/html
+Content-ID: <frame-C866EB77A5A3B929BE37CA67054A4A2A@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://127.0.0.1:5045/
+
+<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"tex=
+t/html; charset=3DUTF-8"><link rel=3D"stylesheet" type=3D"text/css" href=3D=
+"cid:css-d2fe008f-a72b-4cd2-b952-6790d0dbff2f@mhtml.blink" />
+    <title>GenMatDesign-AI</title>
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
+=3D1">
+   =20
+</head>
+<body>
+<div class=3D"container">
+    <div class=3D"hero">
+        <h1>GenMatDesign-AI</h1>
+        <p>Generative AI for inverse materials design of solid-state batter=
+y electrolytes using a Conditional VAE, surrogate modeling, uncertainty est=
+imation, and deployable Flask APIs.</p>
+    </div>
+
+    <div class=3D"status">
+        <b>Device:</b> cpu |
+        <b>Models Ready:</b> True |
+        <b>Internal Library Size:</b> 35
+    </div>
+
+    <div class=3D"grid">
+        <div class=3D"card">
+            <h2>1. Train Internal Model</h2>
+            <p class=3D"muted">Train the generator and surrogate model usin=
+g the built-in electrolyte library.</p>
+            <form method=3D"post" action=3D"http://127.0.0.1:5045/web/train=
+">
+                <button type=3D"submit">Train Model</button>
+            </form>
+           =20
+           =20
+        </div>
+
+        <div class=3D"card">
+            <h2>2. Predict One Electrolyte</h2>
+            <p class=3D"muted">Enter an electrolyte sequence such as <code>=
+PEO-LiTFSI-SN-Al2O3</code>.</p>
+            <form method=3D"post" action=3D"http://127.0.0.1:5045/web/predi=
+ct">
+                <input type=3D"text" name=3D"sequence" value=3D"PEO-LiTFSI-=
+SN-Al2O3">
+                <button type=3D"submit">Predict Properties</button>
+            </form>
+           =20
+           =20
+           =20
+        </div>
+    </div>
+
+    <div class=3D"card" style=3D"margin-top:18px;">
+        <h2>3. Inverse Design from Desired Properties</h2>
+        <p class=3D"muted">Specify target properties and generate new candi=
+date electrolyte sequences ranked by closeness to target.</p>
+        <form method=3D"post" action=3D"http://127.0.0.1:5045/web/generate"=
+>
+            <div class=3D"grid">
+                <div>
+                    <label>Ionic Conductivity</label>
+                    <input type=3D"text" name=3D"ionic_conductivity" value=
+=3D"1.75">
+                </div>
+                <div>
+                    <label>Stability Window</label>
+                    <input type=3D"text" name=3D"stability_window" value=3D=
+"5.15">
+                </div>
+                <div>
+                    <label>Glass Transition Temp</label>
+                    <input type=3D"text" name=3D"glass_transition_temp" val=
+ue=3D"29">
+                </div>
+                <div>
+                    <label>Stability Score</label>
+                    <input type=3D"text" name=3D"stability_score" value=3D"=
+0.90">
+                </div>
+                <div>
+                    <label>Top K</label>
+                    <input type=3D"text" name=3D"top_k" value=3D"10">
+                </div>
+                <div>
+                    <label>Export</label>
+                    <button formaction=3D"http://127.0.0.1:5045/web/export"=
+ formmethod=3D"get" type=3D"submit">Download Last Generated CSV</button>
+                </div>
+            </div>
+            <button type=3D"submit">Generate Candidates</button>
+        </form>
+
+       =20
+    </div>
+
+    <div class=3D"grid" style=3D"margin-top:18px;">
+        <div class=3D"card">
+            <h2>4. Architecture</h2>
+            <div class=3D"mono">Built-in Electrolyte Library
+        =E2=86=93
+Tokenization + Vocabulary
+        =E2=86=93
+Conditional VAE Generator
+        =E2=86=93
+Surrogate Property Predictor
+        =E2=86=93
+Inverse Design from Target Properties
+        =E2=86=93
+Candidate Ranking + Uncertainty
+        =E2=86=93
+Dashboard + REST API</div>
+        </div>
+
+        <div class=3D"card">
+            <h2>5. API</h2>
+            <div class=3D"mono">GET  /api
+GET  /health
+POST /train
+POST /predict
+POST /generate
+GET  /export</div>
+
+            <h3>Example /predict payload</h3>
+            <div class=3D"mono">{
+  "sequence": "PEO-LiTFSI-SN-Al2O3"
+}</div>
+
+            <h3>Example /generate payload</h3>
+            <div class=3D"mono">{
+  "target": {
+    "ionic_conductivity": 1.75,
+    "stability_window": 5.15,
+    "glass_transition_temp": 29.0,
+    "stability_score": 0.90
+  },
+  "top_k": 10
+}</div>
+        </div>
+    </div>
+
+   =20
+
+    <div class=3D"footer-note">
+        This repository is a portfolio-grade inverse materials design proto=
+type for GitHub. The internal library is illustrative and intended for demo=
+nstration, not publication-grade discovery.
+    </div>
+</div>
+
+</body></html>
+------MultipartBoundary--pXJhJ0PlQN28Tibgt47t8sxjN1HmPjL1iIg1XpODI7----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-d2fe008f-a72b-4cd2-b952-6790d0dbff2f@mhtml.blink
+
+@charset "utf-8";
+
+body { font-family: Arial, sans-serif; background: rgb(244, 247, 251); marg=
+in: 0px; padding: 0px; color: rgb(34, 34, 34); }
+
+.container { max-width: 1180px; margin: 26px auto; background: rgb(255, 255=
+, 255); border-radius: 18px; padding: 24px; box-shadow: rgba(0, 0, 0, 0.08)=
+ 0px 8px 28px; }
+
+.hero { background: linear-gradient(135deg, rgb(13, 71, 161), rgb(25, 118, =
+210)); color: white; padding: 20px; border-radius: 16px; margin-bottom: 18p=
+x; }
+
+.hero p { margin: 8px 0px 0px; opacity: 0.95; }
+
+.status { padding: 12px; border-radius: 12px; background: rgb(238, 247, 234=
+); border: 1px solid rgb(207, 232, 198); margin-bottom: 18px; }
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+.card { background: rgb(250, 252, 255); border: 1px solid rgb(221, 231, 245=
+); border-radius: 14px; padding: 16px; }
+
+h1, h2, h3 { margin-top: 0px; }
+
+input, button { width: 100%; padding: 10px; margin-top: 8px; margin-bottom:=
+ 10px; border-radius: 10px; border: 1px solid rgb(202, 213, 226); box-sizin=
+g: border-box; font-size: 14px; }
+
+button { background: rgb(20, 89, 199); color: white; border-width: medium; =
+border-style: none; border-color: currentcolor; border-image: initial; curs=
+or: pointer; font-weight: bold; }
+
+button:hover { background: rgb(15, 73, 165); }
+
+.mono { font-family: Consolas, monospace; background: rgb(243, 246, 250); p=
+adding: 10px; border-radius: 8px; overflow-x: auto; white-space: pre-wrap; =
+}
+
+img { max-width: 100%; border-radius: 12px; margin-top: 12px; }
+
+table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+
+th, td { border: 1px solid rgb(220, 229, 239); padding: 8px; text-align: le=
+ft; font-size: 14px; vertical-align: top; }
+
+th { background: rgb(238, 244, 251); }
+
+.muted { color: rgb(85, 85, 85); }
+
+.footer-note { margin-top: 14px; font-size: 13px; color: rgb(102, 102, 102)=
+; }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+}
+------MultipartBoundary--pXJhJ0PlQN28Tibgt47t8sxjN1HmPjL1iIg1XpODI7------
